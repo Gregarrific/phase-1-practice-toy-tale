@@ -55,24 +55,24 @@ function loadToys() {
   });
   }
 
-  function updateLikes(numLikes, btnID) {
-  // console.log(`http://localhost:3000/toys/${btnID}`);
-  let newLikes = numLikes + 1;
-  const field = "likes";
+  function updateLikes(numLikes, btnId) {
+  let newLikes = parseInt(numLikes) + 1;
   const obj = {};
   obj.likes = newLikes;
   console.log(obj);
-  fetch(`http://localhost:3000/toys/${btnID}`, {
+  fetch(`http://localhost:3000/toys/${btnId}`, {
   method: 'PATCH',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
-  body: JSON.stringify({obj})
+  body: JSON.stringify({'likes': newLikes})
   })
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    // document.getElementById(NEED THE ID)
+    console.log(document.get(btnId))
+    // let newLikeP = document.querySelector(`p#${btnId}`);
+    // newLikeP.textContent.replace(parseInt(numLikes), newLikes);
   });
   }
